@@ -1,15 +1,13 @@
-# Existing entries
+# Ignore dependencies and build output
 node_modules/
 dist/
-.env
 coverage/
+
+# Sensitive and local config
+.env
 *.log
 .vscode/
 .DS_Store
 
-# NEW: Ignore Windows user AppData folders (including Android SDK)
-AppData/
-*.aidl
-*.jar
-*.xml
-*.txt
+# 💣 Ignore system-level folders like AppData completely
+**/AppData/
