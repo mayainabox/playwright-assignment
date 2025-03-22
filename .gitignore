@@ -1,0 +1,13 @@
+# Ignore dependencies and build output
+node_modules/
+dist/
+coverage/
+
+# Sensitive and local config
+.env
+*.log
+.vscode/
+.DS_Store
+
+# 💣 Ignore system-level folders like AppData completely
+**/AppData/
