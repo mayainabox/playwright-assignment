@@ -1,87 +1,126 @@
-# QA interview Mission
+# 🎯 QA Interview Mission – Playwright Test for Demo Web Shop
+
+This project automates a full user flow using [Playwright](https://playwright.dev/) and [Faker.js](https://github.com/faker-js/faker), including user registration and cart validation on [Demo Web Shop](https://demowebshop.tricentis.com).
+
+---
 
 ## 🔹 Test Purpose
 
-validates that a user can:
+Validate that a user can:
 
-- Sign up on [Demo Web Shop](https://demowebshop.tricentis.com)
-- Add a random digital product to their cart
-- Make sure the product name and quantity are right in both the mini cart and the full cart
+- Sign up on the site
+- Add a random digital product to the cart
+- Verify the product and quantity in both the **mini cart** and the **full shopping cart**
 
 ---
 
 ## 🔹 Preconditions
 
-- The website [Demo Web Shop](https://demowebshop.tricentis.com) needs to be online
-- The **Digital Downloads** section should have at least one product
-- You need to have [Playwright](https://playwright.dev/) and [Faker.js](https://github.com/faker-js/faker) installed
-- The browser should start fresh (no cookies or saved sessions)
+- The website [Demo Web Shop](https://demowebshop.tricentis.com) is accessible
+- The **Digital Downloads** section has at least one product
+- [Playwright](https://playwright.dev/) and [Faker.js](https://github.com/faker-js/faker) are installed
+- The browser context must be fresh (no cookies/session data)
 
-> A fresh browser makes sure there’s no old user info or cart data that could mess up the test.
+> A fresh browser ensures no leftover data affects the test (e.g. previous logins or cart items).
 
 ---
 
 ## 🔹 Steps to Execute
 
-### 1. Open the website
-- Go to: `https://demowebshop.tricentis.com`
-- Check that the page title includes **"Demo Web Shop"**
+### 1. Open the Website
+- Navigate to `https://demowebshop.tricentis.com`
+- Verify the title contains **"Demo Web Shop"**
 
-### 2. Register a new user
-- Use Faker to make a random first name, last name, gender, email, and password
-- Go to the **Register** page
-- Fill in and send the form
-- Make sure you see the success message: **"Your registration completed"**
+### 2. Register a New User
+- Generate random data using Faker (name, email, password, etc.)
+- Fill and submit the registration form
+- Check success message: **"Your registration completed"**
 - Click **Continue**
-- Check that the email shows up in the top bar (means you're logged in)
+- Confirm the email appears in the header
 
-### 3. Go to Digital Downloads
-- Click on **"Digital downloads"**
-- Make sure the URL contains `/digital-downloads`
+### 3. Navigate to Digital Downloads
+- Click **"Digital downloads"**
+- Verify the URL contains `/digital-downloads`
 
-### 4. Pick a random product and add it to the cart
-- Wait until all products are loaded
-- Pick one at random and save its name
+### 4. Add Random Product to Cart
+- Wait for product list to load
+- Pick a random product and save its name
 - Click **Add to cart**
-- Check that:
-  - The loading spinner shows and then goes away
-  - A success message says the product was added
+- Confirm spinner shows and disappears
+- Confirm success message appears
 
-### 5. Check mini cart
+### 5. Verify in Mini Cart
 - Hover over the cart icon
-- Make sure the product name is there
+- Check that the product name is shown
 
-### 6. Check full cart
-- Click the shopping cart link
-- Make sure the title says **"Shopping cart"**
-- Check that:
+### 6. Verify in Full Cart
+- Go to the **shopping cart** page
+- Check:
+  - Title is **"Shopping cart"**
   - Product name matches
-  - Quantity is **"1"**
+  - Quantity is **1**
 
 ---
 
 ## 🔹 Post-Conditions
 
-- No cleanup needed unless you want to reset the site
-- The test user and cart item will stay unless you remove them
-- You can clear the browser context to start fresh next time
+- No cleanup required unless test data needs to be removed
+- Test user and cart items will persist until cleared manually
+- Browser session can be cleared between runs
 
 ---
 
 ## 🔹 Validation Criteria
 
-| What to check | What it should show |
-|---------------|---------------------|
-| Page title    | Should say "Demo Web Shop" |
-| Registration  | Should show success message |
-| Header        | Should show user’s email |
-| Add to cart   | Should show success message |
-| Mini-cart     | Should show the product name |
-| Cart page     | Product name should match, and quantity is `1` |
+| What to Check     | Expected Result                           |
+|-------------------|-------------------------------------------|
+| Page title        | Contains "Demo Web Shop"                  |
+| Registration      | Shows confirmation message                |
+| Header            | Displays user’s email                     |
+| Add to cart       | Shows success message                     |
+| Mini-cart         | Displays correct product name             |
+| Cart page         | Product matches and quantity is "1"       |
 
-✅ **Passes** if everything above works  
-❌ **Fails** if something doesn’t match or is missing
+✅ **Test passes** if all validations succeed  
+❌ **Test fails** if any validation does not match the expected result
 
 ---
 
-> Test made with 💙 using **Playwright** and **Faker**
+## 🚀 How to Run the Tests
+
+### 📦 1. Install dependencies
+
+```bash
+npm install
+npx playwright install
+```
+
+### ▶️ 2. Run all tests
+
+```bash
+npx playwright test
+```
+
+### 🔍 3. Run a specific test file
+
+```bash
+npx playwright test tests/your-test-file.spec.ts
+```
+
+### 🧪 4. View the HTML report
+
+```bash
+npx playwright show-report
+```
+
+### 🔧 Project Setup (Optional)
+
+```bash
+git clone https://github.com/YOUR_USERNAME/playwright-assignment.git
+cd playwright-assignment
+npm install
+npx playwright install
+```
+
+
+Automated with 💙 using Playwright and Faker
