@@ -1,7 +1,15 @@
-
-# Playwright
+# Existing entries
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+dist/
+.env
+coverage/
+*.log
+.vscode/
+.DS_Store
+
+# NEW: Ignore Windows user AppData folders (including Android SDK)
+AppData/
+*.aidl
+*.jar
+*.xml
+*.txt
